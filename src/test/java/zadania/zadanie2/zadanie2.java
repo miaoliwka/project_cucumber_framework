@@ -1,5 +1,6 @@
 package zadania.zadanie2;
 
+import common.utils;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -20,20 +21,7 @@ public class zadanie2 {
 
     @Given("user logged in to Presta-Shop")
     public void userLoggedInToPrestaShop() {
-        System.setProperty("webdriver.chrome.driver",
-                "src/main/resources/drivers/chromedriver");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.get("https://mystore-testlab.coderslab.pl/index.php");
-
-        driver.findElement(By.id("_desktop_user_info")).click();
-
-        driver.findElement(By.name("email")).sendKeys("brodie1@freeallapp.com");
-
-        driver.findElement(By.name("password")).sendKeys("qwerty1234");
-
-        driver.findElement(By.id("submit-login")).click();
+        driver = utils.openChromeAndLoginInPrestaShop();
     }
     @When("user clicks 'clothes' button")
     public void userClicksClothesButton(){
@@ -90,8 +78,11 @@ public class zadanie2 {
     }
     @Then("user makes order screenshot")
     public void userMakesOrderScreenshot(){
-
+        String filePath = "screenOfOrder" + System.currentTimeMillis() + ".jpg";
+        try {
+            utils.screenShot(driver, filePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
-
 }

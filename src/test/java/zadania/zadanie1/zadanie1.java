@@ -1,5 +1,6 @@
 package zadania.zadanie1;
 
+import common.utils;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -11,8 +12,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.concurrent.TimeUnit;
-
 public class zadanie1 {
 
     private WebDriver driver;
@@ -20,24 +19,7 @@ public class zadanie1 {
 
     @Given("user is logged in to Presta-Shop")
     public void userIsLoggedInToPrestaShop() {
-        System.setProperty("webdriver.chrome.driver",
-                "src/main/resources/drivers/chromedriver");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.get("https://mystore-testlab.coderslab.pl/index.php");
-
-        WebElement signIn = driver.findElement(By.id("_desktop_user_info"));
-        signIn.click();
-
-        WebElement email = driver.findElement(By.name("email"));
-        email.sendKeys("brodie1@freeallapp.com");
-
-        WebElement password = driver.findElement(By.name("password"));
-        password.sendKeys("qwerty1234");
-
-        WebElement signInButton = driver.findElement(By.id("submit-login"));
-        signInButton.click();
+        driver = utils.openChromeAndLoginInPrestaShop();
     }
 
     @When("user goes to Addresses")
