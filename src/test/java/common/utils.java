@@ -32,10 +32,10 @@ public class utils {
         return driver;
     }
     public static void screenShot(WebDriver webdriver, String pathToFile) throws Exception {
-        TakesScreenshot screenshot = ((TakesScreenshot) webdriver);
-        File screen = screenshot.getScreenshotAs(OutputType.FILE);
-        File file = new File(pathToFile);
-        FileHandler.copy(screen,file);
+        TakesScreenshot screenshot = ((TakesScreenshot) webdriver); //konwertowanie obiektu web driver'a
+        File screen = screenshot.getScreenshotAs(OutputType.FILE); //wywołanie metody getScreenshotAs, żeby utworzyć plik z obrazkiem
+        File file = new File(pathToFile); //przenosi plik z obrazkiem do nowej lokalizacji
+        FileHandler.copy(screen,file); //kopiuje plik w nowej lokalizacji
     }
 }
 

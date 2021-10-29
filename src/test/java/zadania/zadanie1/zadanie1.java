@@ -34,7 +34,7 @@ public class zadanie1 {
         createNewAddress.click();
     }
 
-    @When("user fills {string} as Alias, {string} as Address, {string} as Zip, {string} as City, {string} as Phone")
+    @Then("user fills {string} as Alias, {string} as Address, {string} as Zip, {string} as City, {string} as Phone")
     public void userFillsAddressData(String Alias, String Address, String Zip, String City, String Phone) {
         driver.findElement(By.name("alias")).sendKeys(Alias);
         driver.findElement(By.name("address1")).sendKeys(Address);
@@ -50,7 +50,11 @@ public class zadanie1 {
     }
     @Then("{string} is displayed")
     public void userSeesMessage(String message){
+        //metoda zwraca String, który pobierany jest z elementu successAlertText
+        //za pomocą wbudowanej metody Selenium .getText()
         String successAlertText = driver.findElement(By.id("notifications")).getText();
         Assertions.assertEquals(message, successAlertText, "Error!");
+        //asercja mi sprawdza czy message tą którą podałam w historyjce i poprzez by.id jest taka sama,
+        //jeśli nie to pojawi mi się error
     }
 }

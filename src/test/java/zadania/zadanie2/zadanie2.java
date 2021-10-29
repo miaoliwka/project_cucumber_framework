@@ -78,7 +78,7 @@ public class zadanie2 {
     }
     @Then("user makes order screenshot")
     public void userMakesOrderScreenshot(){
-        String filePath = "screenOfOrder" + System.currentTimeMillis() + ".jpg";
+        String filePath = "screenOfOrder" + System.currentTimeMillis() + ".jpg"; //zapisuje plik w podanym formacie
         try {
             utils.screenShot(driver, filePath);
         } catch (Exception e) {

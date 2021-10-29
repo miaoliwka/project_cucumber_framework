@@ -5,7 +5,7 @@ Feature: New Address
     Given user is logged in to Presta-Shop
     When user goes to Addresses
     And user clicks add new address
-    When user fills "<alias>" as Alias, "<address>" as Address, "<zip>" as Zip, "<city>" as City, "<phone>" as Phone
+    Then user fills "<alias>" as Alias, "<address>" as Address, "<zip>" as Zip, "<city>" as City, "<phone>" as Phone
     And user clicks 'Save' button
     Then "Address successfully added!" is displayed
 
