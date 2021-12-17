@@ -26,7 +26,7 @@ public class utils {
         email.sendKeys("brodie1@freeallapp.com");
 
         WebElement password = driver.findElement(By.name("password"));
-        password.sendKeys("qwerty1234");
+        password.sendKeys("qwerty12345");
 
         WebElement signInButton = driver.findElement(By.id("submit-login"));
         signInButton.click();
